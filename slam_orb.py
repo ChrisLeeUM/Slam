@@ -21,9 +21,12 @@ if __name__ == "__main__":
 
         if ret:
             kps, des = extract_points(image)
+            for i in range(500):
+                u1, v1 = int(kps[i][0]), int(kps[i][1])
+                cv2.circle(image, (u1, v1), color=(0,0,255), radius=3)
+            # print(kps[0][0], kps[0][1])
+            cv2.imshow("slam", image)
 
-        # cv2.imshow("slam", frame.image)
-        print(len(kps), kps)
-        print('\n')
-        print(len(des), des)
-        break
+        # print(len(kps), kps)
+        # print(len(des), des)
+        if cv2.waitKey(30) & 0xFF == ord('q'): break
